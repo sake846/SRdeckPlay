@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <ApplicationIcon>SRdeckPlay.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="SRdeckPlay.ico" />
+    <Resource Include="Resources\**\*.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SRdeckCore.SignalProcessing\SRdeckCore.SignalProcessing.csproj" />
+    <ProjectReference Include="..\SRdeckPlugin.Contracts\SRdeckPlugin.Contracts.csproj" />
+    <Compile Include="..\SRdeckPlugin.Analog\AnalogDemodulator*.cs" Link="Dsp\%(Filename)%(Extension)" />
+    <Compile Include="..\SRdeck\Audio\PcmWaveFileReader.cs;..\SRdeck\Audio\PcmWaveFormat.cs;..\SRdeck\Audio\IAudioOutput.cs;..\SRdeck\Audio\WaveOutAudioOutput.cs" Link="Audio\%(Filename)%(Extension)" />
+    <Compile Include="..\SRdeck\Services\ShutdownDiagnosticLog.cs;..\SRdeck\Configuration\UserDataPaths.cs" Link="Audio\%(Filename)%(Extension)" />
+    <Compile Include="..\SRdeck\Renderers\ColorLUT.cs;..\SRdeck\Renderers\Compat.Core.cs;..\SRdeck\Renderers\RenderUtils.cs;..\SRdeck\Renderers\WaterfallTimeModel.cs;..\SRdeck\Models\AppConstants.cs" Link="Rendering\%(Filename)%(Extension)" />
+    <Page Include="..\SRdeck\Resources\Colors.xaml;..\SRdeck\Resources\Brushes.xaml;..\SRdeck\Resources\Fonts.xaml;..\SRdeck\Resources\ControlStyles.xaml;..\SRdeck\Resources\ComplexStyles.xaml;..\SRdeck\Resources\LedYellowGreenStyles.xaml" Link="Resources\%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

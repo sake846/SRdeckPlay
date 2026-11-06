@@ -1,0 +1,6 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- 3. Fonts -->
+    <FontFamily x:Key="MainFontFamily">BIZ UDPゴシック, BIZ UDPGothic, Segoe UI</FontFamily>
+    <FontFamily x:Key="DisplayFontFamily">BIZ UDゴシック, BIZ UDGothic, Consolas</FontFamily>
+</ResourceDictionary>

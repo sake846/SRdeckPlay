@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <Authors>sake846</Authors>
+    <Copyright>Copyright (c) 2026 sake846</Copyright>
+    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/sake846/SRdeck</PackageProjectUrl>
+    <PackageReadmeFile>PACKAGE-README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/sake846/SRdeck.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' != 'false'">
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="" Visible="false" Condition="Exists('$(MSBuildThisFileDirectory)LICENSE')" />
+    <None Include="$(MSBuildThisFileDirectory)THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="" Visible="false" Condition="Exists('$(MSBuildThisFileDirectory)THIRD-PARTY-NOTICES.md')" />
+    <None Include="$(MSBuildThisFileDirectory)SECURITY.md" Pack="true" PackagePath="" Visible="false" Condition="Exists('$(MSBuildThisFileDirectory)SECURITY.md')" />
+    <None Include="$(MSBuildThisFileDirectory)PATENT-NOTICE.md" Pack="true" PackagePath="" Visible="false" Condition="Exists('$(MSBuildThisFileDirectory)PATENT-NOTICE.md')" />
+    <None Include="$(MSBuildThisFileDirectory)PACKAGE-README.md" Pack="true" PackagePath="" Visible="false" Condition="Exists('$(MSBuildThisFileDirectory)PACKAGE-README.md')" />
+  </ItemGroup>
+</Project>

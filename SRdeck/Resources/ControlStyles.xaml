@@ -1,0 +1,202 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Brushes.xaml" />
+        <ResourceDictionary Source="Fonts.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Base Styles -->
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ControlBaseBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="9">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FF404040" />
+                <Setter Property="BorderBrush" Value="#FF555555" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#FF111111" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource TextDisabledBrush}" />
+                <Setter Property="BorderBrush" Value="#FF222222" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="FlatButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource BgSelectedDarkBrush}"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="GroupBox">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Border Background="Transparent" BorderBrush="{StaticResource ControlBorderBrush}" BorderThickness="1" CornerRadius="3" SnapsToDevicePixels="True">
+                        <StackPanel>
+                            <Border Background="{StaticResource ControlBaseBrush}" BorderBrush="{StaticResource ControlBorderBrush}" BorderThickness="0,0,0,1" CornerRadius="3,3,0,0" Padding="5,3">
+                                <ContentPresenter ContentSource="Header" TextBlock.Foreground="{StaticResource TextPrimaryBrush}" TextBlock.FontWeight="Normal" HorizontalAlignment="Left" />
+                            </Border>
+                            <ContentPresenter Margin="0,5,0,0" />
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid x:Name="Bg" Background="Transparent" SnapsToDevicePixels="true">
+                        <Track x:Name="PART_Track" IsDirectionReversed="true">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.PageUpCommand" Focusable="false" IsTabStop="false">
+                                    <RepeatButton.Template>
+                                        <ControlTemplate TargetType="RepeatButton">
+                                            <Border Background="Transparent" />
+                                        </ControlTemplate>
+                                    </RepeatButton.Template>
+                                </RepeatButton>
+                            </Track.DecreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb x:Name="Thumb">
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Grid>
+                                                <Border x:Name="ThumbVisual" Background="{StaticResource BorderOffBrush}" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.PageDownCommand" Focusable="false" IsTabStop="false">
+                                    <RepeatButton.Template>
+                                        <ControlTemplate TargetType="RepeatButton">
+                                            <Border Background="Transparent" />
+                                        </ControlTemplate>
+                                    </RepeatButton.Template>
+                                </RepeatButton>
+                            </Track.IncreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter TargetName="Bg" Property="MinHeight" Value="8" />
+                            <Setter TargetName="PART_Track" Property="IsDirectionReversed" Value="false" />
+                            <Setter TargetName="Thumb" Property="Height" Value="2" />
+                            <Setter TargetName="Thumb" Property="Margin" Value="0,1,0,0" />
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter TargetName="Bg" Property="MinWidth" Value="8" />
+                            <Setter TargetName="Thumb" Property="Width" Value="2" />
+                            <Setter TargetName="Thumb" Property="Margin" Value="1,0,0,0" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Bg" Property="Background" Value="#10FFFFFF" />
+                            <Setter TargetName="Thumb" Property="Background" Value="#FF888888" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true" />
+                                <Condition Property="Orientation" Value="Horizontal" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Thumb" Property="Height" Value="7" />
+                            <Setter TargetName="Thumb" Property="Margin" Value="0,0,0,1" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true" />
+                                <Condition Property="Orientation" Value="Vertical" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Thumb" Property="Width" Value="7" />
+                            <Setter TargetName="Thumb" Property="Margin" Value="0,0,1,0" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="{StaticResource ControlBaseBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource DisplayFontFamily}"/>
+    </Style>
+
+    <Style TargetType="ListBoxItem">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+        <Setter Property="Background" Value="{StaticResource ControlBaseBrush}" />
+        <Setter Property="Padding" Value="2,1"/>
+        <Setter Property="Margin" Value="1"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource BgSelectedDarkBrush}" />
+                <Setter Property="Foreground" Value="#FF88CC00" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="#FF1E1E1E"/>
+        <Setter Property="Foreground" Value="#FFDCDCDC"/>
+        <Setter Property="BorderBrush" Value="#FF3E3E42"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="4">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Expander">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}" />
+    </Style>
+</ResourceDictionary>

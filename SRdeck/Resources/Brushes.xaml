@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- 2. SolidColorBrushes -->
+
+    <SolidColorBrush x:Key="PanelBaseBrush" Color="{StaticResource PanelBase}" />
+    <SolidColorBrush x:Key="PanelSurfaceBrush" Color="{StaticResource PanelSurface}" />
+    <SolidColorBrush x:Key="ControlBaseBrush" Color="{StaticResource ControlBase}" />
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="{StaticResource ControlBorder}" />
+    <SolidColorBrush x:Key="InstrumentBaseBrush" Color="{StaticResource InstrumentBase}" />
+    <SolidColorBrush x:Key="RaisedPanelBrush" Color="{StaticResource RaisedPanel}" />
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}" />
+    <SolidColorBrush x:Key="TextDimBrush" Color="{StaticResource TextDim}" />
+    <SolidColorBrush x:Key="TextDisabledBrush" Color="{StaticResource TextDisabled}" />
+    <SolidColorBrush x:Key="TextOnAccentBrush" Color="{StaticResource TextOnAccent}" />
+    
+    <!-- Standard Theme UI Brushes -->
+    <SolidColorBrush x:Key="BgHoverBrush" Color="#FF444444" />
+    <SolidColorBrush x:Key="BgActiveBrush" Color="#FF3B4C0F" />
+    <SolidColorBrush x:Key="BorderActiveBrush" Color="#FFAAE611" />
+    <SolidColorBrush x:Key="BorderOffBrush" Color="#FF555555" />
+    <!-- Legacy name retained for existing control styles; "off" is still readable. -->
+    <SolidColorBrush x:Key="TextOffBrush" Color="{StaticResource TextSecondary}" />
+    
+    <!-- Amber/YellowGreen Theme Specific Brushes -->
+    <SolidColorBrush x:Key="BgActiveAmberBrush" Color="#FF3B4C0F" />
+    <SolidColorBrush x:Key="BgHoverAmberBrush" Color="#FF7B9C18" />
+    <SolidColorBrush x:Key="BgOffHoverBrush" Color="#FF505050" />
+    
+    <!-- New Tokenized Brushes -->
+    <SolidColorBrush x:Key="BgDarkBrush" Color="{StaticResource BgDark}" />
+    <SolidColorBrush x:Key="BgPopupBrush" Color="{StaticResource BgPopup}" />
+    <SolidColorBrush x:Key="BgSelectedDarkBrush" Color="{StaticResource BgSelectedDark}" />
+    <SolidColorBrush x:Key="BrandTitleCloseBrush" Color="{StaticResource BrandTitleClose}" />
+    <SolidColorBrush x:Key="BrandTitleClosePressedBrush" Color="{StaticResource BrandTitleClosePressed}" />
+    <SolidColorBrush x:Key="BrandAmberBrush" Color="{StaticResource LedYellowGreen}" />
+    <SolidColorBrush x:Key="TextActiveBrush" Color="{StaticResource LedYellowGreen}" />
+    
+    <SolidColorBrush x:Key="LedBlueBrush" Color="{StaticResource LedBlue}" />
+    <SolidColorBrush x:Key="LedRedBrush" Color="{StaticResource LedRed}" />
+    <SolidColorBrush x:Key="LedYellowGreenBrush" Color="{StaticResource LedYellowGreen}" />
+</ResourceDictionary>
